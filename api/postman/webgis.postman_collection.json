@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "f87f291c-6cd8-4ef5-863c-bb862259369c",
+		"name": "webgis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"type\": \"Feature\",\r\n      \"properties\": {\"nama_line\":\"line 999\", \"deskripsi\": \"a line\"},\r\n      \"geometry\": {\r\n        \"type\": \"LineString\",\r\n        \"coordinates\": [\r\n          [\r\n            466.79809570312494,\r\n            -6.369893945725818\r\n          ],\r\n          [\r\n            468.1494140625,\r\n            -6.68643125265198\r\n          ]\r\n        ]\r\n      }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api"
+					]
+				},
+				"description": "Create a line/ point / polygon"
+			},
+			"response": []
+		},
+		{
+			"name": "RETRIEVE All Points",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/point",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"point"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RETRIEVE All Lines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/line",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"line"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RETRIEVE All Polygons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/polygon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"polygon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"type\": \"Feature\",\r\n      \"properties\": {\r\n          \"nama_polygon\": \"polygon1\",\r\n          \"deskripsi\" : \"a polygon\"\r\n      },\r\n      \"geometry\": {\r\n        \"type\": \"Polygon\",\r\n        \"coordinates\": [\r\n          [\r\n            [\r\n              468.78662109375,\r\n              -7.057282352971569\r\n            ],\r\n            [\r\n              468.85253906249994,\r\n              -7.580327791330129\r\n            ],\r\n            [\r\n              469.84130859375,\r\n              -7.602107874702888\r\n            ],\r\n            [\r\n              469.35791015624994,\r\n              -6.926426847059551\r\n            ],\r\n            [\r\n              468.78662109375,\r\n              -7.057282352971569\r\n            ]\r\n          ]\r\n        ]\r\n      }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"2"
+					]
+				},
+				"description": "Update a line/ point/ polygon"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a Point",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/point/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"point",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a Line",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/line/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"line",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a Polygon",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/polygon/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"polygon",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

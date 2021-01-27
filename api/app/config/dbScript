@@ -1,0 +1,51 @@
+CREATE EXTENSION postgis;
+CREATE TABLE line
+(
+    id SERIAL PRIMARY KEY,
+    nama_line VARCHAR(50) NOT NULL,
+    geom geometry(LineString,4326) NOT NULL,
+    deskripsi VARCHAR(255) NOT NULL,
+	panjang_garis NUMERIC GENERATED ALWAYS AS (st_length(geom)) STORED
+);
+
+CREATE TABLE point
+(
+    id SERIAL PRIMARY KEY,
+    nama_point VARCHAR(50) NOT NULL,
+    geom geometry(Point,4326) NOT NULL
+);
+CREATE TABLE polygon
+(
+    id SERIAL PRIMARY KEY,
+    nama_polygon VARCHAR(50) NOT NULL,
+    geom geometry(Polygon,4326) NOT NULL,
+	deskripsi VARCHAR(255) NOT NULL,
+	luas_area NUMERIC GENERATED ALWAYS AS (ST_Area(geom)) STORED
+);
+					   
+INSERT INTO point ( nama_point, geom )
+  VALUES ( 'Denpasar', ST_GeomFromText('POINT(114.576416 -3.316018)', 4326)),
+  ( 'Depok', ST_GeomFromText('POINT(106.809082 -6.391730)', 4326)),
+  ( 'Denpasar', ST_GeomFromText('POINT(115.212249 -8.655699)', 4326)),
+  ( 'Samarinda', ST_GeomFromText('POINT(117.136230 -0.494378)', 4326)),
+  ( 'Dinagat Island', ST_GeomFromText('POINT(125.6 10.1)', 4326));
+  
+INSERT INTO line (nama_line, geom, deskripsi)
+  VALUES ('line 1', 'LINESTRING( 110.906982 -1.603794,112.203369 -0.637193)', 'A line'),
+  ('line 2', 'LINESTRING(110.412597 -7.776308,112.741699 -7.253496)', 'Ykt-Sby'),
+  ('line 3', 'LINESTRING(103.623046 -1.669685,104.721679 -3.008869)', 'J-Plb');
+
+INSERT INTO polygon (nama_polygon, geom, deskripsi)
+VALUES ('polygon 1', ST_GeomFromText('POLYGON((
+						114.235839 0.725078,
+						113.620605 -1.010689,
+						115.642089 -0.505364,
+                        114.235839 0.725078))', 4326), 'A polygon feature'),
+('polygon 2', ST_GeomFromText('POLYGON((
+						107.292480 -7.427836,
+						108.457031 -7.798078,
+						108.588867 -7.318881,
+						107.644042 -6.970049,
+					    107.292480 -7.427836))', 4326), 'A polygon feature');
+					   
+
